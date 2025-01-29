@@ -1,0 +1,3 @@
+//fetching data from weather api....
+// api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=4e6b0a3c59e47a99fdabba30c0a0e2b2
+// 

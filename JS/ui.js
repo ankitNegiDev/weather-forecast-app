@@ -1,0 +1,1 @@
+// Manages the user interface, including updating the DOM, showing weather data, handling errors, and managing loaders/icons.

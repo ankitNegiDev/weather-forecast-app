@@ -1,0 +1,1 @@
+// Handles saving and retrieving data from localStorage or sessionStorage (e.g., recent searches).

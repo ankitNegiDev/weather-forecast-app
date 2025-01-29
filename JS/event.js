@@ -1,0 +1,1 @@
+// Contains all event listeners (e.g., search button clicks, dropdown selections, and geolocation handling).
