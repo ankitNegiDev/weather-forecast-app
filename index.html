@@ -6,7 +6,7 @@
         <title>Weather Forecast</title>
         <!-- Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <!-- Font Awesome -->
+        <!-- Font Awesome CDN link -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -14,18 +14,31 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <!-- linking the custom css -->
+        <!-- linking custom css -->
         <link rel="stylesheet" href="CSS/style.css" />
     </head>
-    <body class="bg-gray-100 font-sans">
+    <body
+        class="bg-gray-100 font-sans bg-gradient-to-r from-[#6943CB] to-[#6954DC] min-h-screen"
+    >
         <!-- Header Section -->
-        <header class="bg-blue-600 text-white py-4">
+        <header
+            class="bg-black bg-opacity-30 backdrop-blur-md text-white p-4 mx-auto rounded-sm"
+        >
             <div
-                class="container mx-auto px-4 flex justify-between items-center"
+                class="container mx-auto px-4 flex flex-wrap justify-between items-center"
             >
-                <h1 class="text-2xl font-bold">Weather Forecast App</h1>
+                <h1
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold"
+                >
+                    Weather Forecast App
+                </h1>
                 <nav>
-                    <a href="#" class="text-white hover:underline">Home</a>
+                    <a
+                        href="#"
+                        class="text-white hover:underline hover:decoration-[#FFB6C1] text-xl sm:text-2xl md:text-3xl"
+                    >
+                        Home
+                    </a>
                 </nav>
             </div>
         </header>
@@ -33,12 +46,16 @@
         <!-- Main Section -->
         <main class="container mx-auto px-4 mt-8">
             <!-- Search Section -->
-            <section class="bg-white shadow-md p-6 rounded-lg mb-8">
+            <section
+                class="bg-white/10 backdrop-blur-md shadow-2xl p-6 rounded-lg mb-8 border-2 border-white/20"
+            >
                 <div class="flex flex-wrap justify-between items-center gap-4">
-                    <h2 class="text-xl font-bold">Search Weather</h2>
+                    <h2 class="text-3xl font-bold text-white">
+                        Search Weather
+                    </h2>
                     <button
                         id="unit-toggle-btn"
-                        class="bg-gray-200 text-sm py-1 px-3 rounded-lg focus:outline-none hover:bg-gray-300"
+                        class="bg-white/20 text-white text-xl py-2 px-3 rounded-lg focus:outline-none hover:bg-white/30 transition"
                     >
                         converter °C °F
                     </button>
@@ -48,126 +65,212 @@
                         type="text"
                         id="search-input"
                         placeholder="Enter city name"
-                        class="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-auto flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        class="bg-white/20 border-2 border-white/30 text-white rounded-lg px-4 py-3 w-full sm:w-auto flex-1 focus:outline-none focus:ring-2 focus:ring-cyan-300 placeholder-white/80 sm:text-2xl"
                     />
                     <select
                         id="recent-dropdown"
-                        class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        class="bg-white/20 border-2 border-white/30 text-white rounded-lg sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 sm:text-xl"
                     >
                         <!-- Dynamically add options here -->
                     </select>
                     <button
                         id="search-btn"
-                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+                        class="bg-gradient-to-r from-teal-400 to-blue-500 text-white px-20 py-2 rounded-lg hover:from-purple-500 hover:to-pink-500 focus:outline-none transition-all duration-700 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md focus:ring-2 focus:ring-blue-400 text-2xl"
                     >
                         Search
                     </button>
                     <button
                         id="current-location-btn"
-                        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none"
+                        class="bg-gradient-to-r from-green-400 to-teal-500 text-white px-6 py-3 rounded-lg hover:from-teal-500 hover:to-green-400 focus:outline-none transform hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-md focus:ring-2 focus:ring-teal-400 transition-all duration-700 ease-in-out text-xl"
                     >
                         Use Current Location
                     </button>
                 </div>
             </section>
 
+            <!-- error div if something goes wrong just to avoid alert.. -->
+            <div
+                id="error-message"
+                class="text-orange-600 text-center sm:p-5 outline-none border-none sm:text-2xl"
+            ></div>
+
             <!-- Current Weather Section -->
-            <section class="bg-white shadow-md p-6 rounded-lg mb-8 text-center">
-                <h2 class="text-xl font-bold mb-4">Current Weather</h2>
+            <section
+                class="bg-white/10 border-2 border-white/20 backdrop-blur-md shadow-2xl text-white p-6 rounded-lg mb-8 text-center"
+            >
+                <h2 class="text-4xl font-bold mb-4 text-indigo-900">
+                    Current Weather
+                </h2>
                 <div
                     class="current-weather-container flex flex-col items-center"
                     id="current-weather"
                 >
                     <div
-                        class="weather-icon text-6xl mb-4"
+                        class="weather-icon text-8xl mb-4"
                         id="weather-icon"
                     ></div>
                     <h2
-                        class="temprature text-4xl font-bold"
+                        class="temprature text-5xl font-bold text-white"
                         id="temprature"
                     ></h2>
-                    <div class="feelslike text-lg" id="feels-like"></div>
                     <div
-                        class="description text-sm text-gray-500"
+                        class="feelslike text-2xl m-2 text-gray-700 font-medium"
+                        id="feels-like"
+                    ></div>
+                    <div
+                        class="description text-2xl text-gray-100 font-medium"
                         id="description"
                     ></div>
-                    <hr class="my-4 w-full" />
-                    <div class="date text-gray-600" id="date"></div>
-                    <div class="city text-xl font-medium" id="city"></div>
+                    <hr class="my-4 w-full border border-white/20" />
+                    <div
+                        class="date text-gray-700 text-xl font-medium mb-2"
+                        id="date"
+                    ></div>
+                    <div
+                        class="city text-xl font-medium text-4xl font-bold"
+                        id="city"
+                    ></div>
                 </div>
             </section>
 
             <!-- Today Highlights Section -->
-            <section class="bg-white shadow-md p-6 rounded-lg mb-8">
-                <h2 class="text-xl font-bold mb-4">Today Highlights</h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <!-- Weather Cards -->
-                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+            <section
+                class="bg-white/10 border-2 border-white/20 backdrop-blur-md shadow-2xl p-6 rounded-lg mb-8 text-white"
+            >
+                <h2 class="text-3xl font-bold mb-4">Today Highlights</h2>
+                <!-- Weather Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Humidity card -->
+                    <div
+                        class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
+                    >
                         <i
-                            class="fa-solid fa-water text-blue-500 text-3xl mb-2"
+                            class="fa-solid fa-water text-blue-500 text-4xl mb-5"
                         ></i>
-                        <h1 id="HValue" class="text-xl font-bold">--%</h1>
-                        <p class="text-sm text-gray-600">Humidity</p>
-                    </div>
-                    <div class="bg-gray-100 p-4 rounded-lg text-center">
-                        <i
-                            class="fa-solid fa-wind text-green-500 text-3xl mb-2"
-                        ></i>
-                        <h1 id="WValue" class="text-xl font-bold">-- m/s</h1>
-                        <p class="text-sm text-gray-600">Wind Speed</p>
-                    </div>
-                    <div class="bg-gray-100 p-4 rounded-lg text-center">
-                        <i
-                            class="fa-solid fa-sun text-yellow-500 text-3xl mb-2"
-                        ></i>
-                        <p class="text-sm text-gray-600">
-                            Sunrise: <span id="sun-rise-value">--</span>
-                        </p>
-                        <p class="text-sm text-gray-600">
-                            Sunset: <span id="sun-set-value">--</span>
+                        <h1
+                            id="HValue"
+                            class="text-sm sm:text-2xl md:text-2xl font-bold"
+                        >
+                            --%
+                        </h1>
+                        <p class="text-sm sm:text-xl text-gray-600 font-medium">
+                            Humidity
                         </p>
                     </div>
-                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <!-- wind card -->
+                    <div
+                        class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
+                    >
                         <i
-                            class="fa-solid fa-cloud text-gray-500 text-3xl mb-2"
+                            class="fa-solid fa-wind text-gray-500 text-4xl mb-5"
                         ></i>
-                        <h1 id="CValue" class="text-xl font-bold">--%</h1>
-                        <p class="text-sm text-gray-600">Clouds</p>
+                        <h1
+                            id="WValue"
+                            class="text-sm sm:2xl md:text-2xl font-bold"
+                        >
+                            -- m/s
+                        </h1>
+                        <p class="text-sm sm:text-xl text-gray-600 font-medium">
+                            Wind Speed
+                        </p>
                     </div>
-                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <!-- sun card -->
+                    <div
+                        class="pt-4 sm:p-4 rounded-lg sm:text-center bg-gradient-to-r from-purple-400 to-indigo-400"
+                    >
                         <i
-                            class="fa-solid fa-sun text-red-500 text-3xl mb-2"
+                            class="fa-solid fa-sun text-yellow-500 text-4xl mb-6 block text-center"
                         ></i>
-                        <h1 id="UVValue" class="text-xl font-bold">--</h1>
-                        <p class="text-sm text-gray-600">UV Index</p>
+                        <p
+                            class="text-sm sm:text-xl text-gray-600 font-medium pl-3 md:p-0"
+                        >
+                            Sunrise
+                            <span
+                                id="sun-rise-value"
+                                class="text-white p-0 md:p-0 sm:p-3 lg:p-2 font-medium"
+                                >--</span
+                            >
+                        </p>
+                        <p
+                            class="text-sm sm:text-xl text-gray-600 font-medium pl-3 md:p-0"
+                        >
+                            Sunset
+                            <span
+                                id="sun-set-value"
+                                class="text-white p-1 sm:p-3 md:p-1 lg:p-2 font-medium"
+                                >--</span
+                            >
+                        </p>
                     </div>
-                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <!-- cloud card -->
+                    <div
+                        class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
+                    >
                         <i
-                            class="fa-solid fa-tachometer-alt text-red-700 text-3xl mb-2"
+                            class="fa-solid fa-cloud text-gray-500 text-4xl mb-5"
                         ></i>
-                        <h1 id="PValue" class="text-xl font-bold">-- hPa</h1>
-                        <p class="text-sm text-gray-600">Pressure</p>
+                        <h1
+                            id="CValue"
+                            class="text-sm sm:text-2xl md:text-2xl font-bold"
+                        >
+                            --%
+                        </h1>
+                        <p class="text-sm sm:text-xl text-gray-600 font-medium">
+                            Clouds
+                        </p>
+                    </div>
+                    <!-- uv index card -->
+                    <div
+                        class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
+                    >
+                        <i
+                            class="fa-solid fa-sun text-red-800 text-4xl mb-5"
+                        ></i>
+                        <h1
+                            id="UVValue"
+                            class="text-sm sm:text-2xl md:text-2xl font-bold"
+                        >
+                            --
+                        </h1>
+                        <p class="text-sm sm:text-xl text-gray-600 font-medium">
+                            UV Index
+                        </p>
+                    </div>
+                    <!-- pressure card -->
+                    <div
+                        class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
+                    >
+                        <i
+                            class="fa-solid fa-tachometer-alt text-red-800 text-4xl mb-5"
+                        ></i>
+                        <h1
+                            id="PValue"
+                            class="text-sm sm:2xl md:text-2xl font-bold"
+                        >
+                            -- hPa
+                        </h1>
+                        <p class="text-sm sm:text-xl text-gray-600 font-medium">
+                            Pressure
+                        </p>
                     </div>
                 </div>
             </section>
 
             <!-- Extended Forecast Section -->
-            <section class="bg-white shadow-md p-6 rounded-lg">
-                <h2 class="text-xl font-bold mb-4">5-Day Forecast</h2>
+            <section
+                class="bg-white/10 border-2 border-white/20 backdrop-blur-md shadow-2xl p-6 rounded-lg text-white"
+            >
+                <h2 class="text-3xl font-bold mb-4">5-Day Forecast</h2>
                 <div
                     id="forecast-container"
-                    class="grid grid-cols-1 md:grid-cols-3 gap-4"
+                    class="grid grid-cols-1 md:grid-cols-3 gap-6"
                 >
                     <!-- Weather cards for each day will be dynamically added -->
                 </div>
             </section>
-
-            <!-- error div if something goes wrong just to avoid alert.. -->
-            <div id="error-message" class="text-red-500 text-center mt-4"></div>
         </main>
 
         <!-- Linking JS Files -->
         <script type="module" src="JS/app.js"></script>
-        <!-- <script src="JS/app.js"></script> -->
     </body>
 </html>
