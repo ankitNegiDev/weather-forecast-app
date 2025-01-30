@@ -19,6 +19,7 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar {
     width: 12px;
 }
+
 /* to give the background color for the option since it is not in dom we can apply in js file but we already did in that way for extended forecast section. */
 option {
     background-color: white;
