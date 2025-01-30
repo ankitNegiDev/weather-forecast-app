@@ -1,11 +1,11 @@
 /* smooth scrolling for the whole document.. */
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
 
 /* Custom scrollbar  */
 body::-webkit-scrollbar-track {
-    background-color:#6954DC; 
+    background-color: #6954dc;
     /* border-radius: 1rem; */
 }
 
@@ -18,4 +18,12 @@ body::-webkit-scrollbar-thumb {
 /* Custom scrollbar */
 body::-webkit-scrollbar {
     width: 12px;
+}
+/* to give the background color for the option since it is not in dom we can apply in js file but we already did in that way for extended forecast section. */
+option {
+    background-color: white;
+    border: 2px solid white;
+    color: white;
+    /* background: linear-gradient(#6943CB,#7B85E5); */
+    background-color: #6943cb;
 }

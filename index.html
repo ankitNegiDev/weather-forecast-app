@@ -53,6 +53,7 @@
                     <h2 class="text-3xl font-bold text-white">
                         Search Weather
                     </h2>
+                    <!-- converter button. degree to farahanite -->
                     <button
                         id="unit-toggle-btn"
                         class="bg-white/20 text-white text-xl py-2 px-3 rounded-lg focus:outline-none hover:bg-white/30 transition"
@@ -60,25 +61,30 @@
                         converter °C °F
                     </button>
                 </div>
+                <!-- input , dropdown, search and current location buttons -->
                 <div class="mt-4 flex flex-wrap gap-4">
+                    <!-- input box -->
                     <input
                         type="text"
                         id="search-input"
                         placeholder="Enter city name"
                         class="bg-white/20 border-2 border-white/30 text-white rounded-lg px-4 py-3 w-full sm:w-auto flex-1 focus:outline-none focus:ring-2 focus:ring-cyan-300 placeholder-white/80 sm:text-2xl"
                     />
+                    <!-- dropdown for recent cities -->
                     <select
                         id="recent-dropdown"
                         class="bg-white/20 border-2 border-white/30 text-white rounded-lg sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 sm:text-xl"
                     >
-                        <!-- Dynamically add options here -->
+                        <!-- Options will be Dynamically added here -->
                     </select>
+                    <!-- search button -->
                     <button
                         id="search-btn"
                         class="bg-gradient-to-r from-teal-400 to-blue-500 text-white px-20 py-2 rounded-lg hover:from-purple-500 hover:to-pink-500 focus:outline-none transition-all duration-700 transform hover:scale-105 hover:shadow-xl active:scale-95 active:shadow-md focus:ring-2 focus:ring-blue-400 text-2xl"
                     >
                         Search
                     </button>
+                    <!-- current location button -->
                     <button
                         id="current-location-btn"
                         class="bg-gradient-to-r from-green-400 to-teal-500 text-white px-6 py-3 rounded-lg hover:from-teal-500 hover:to-green-400 focus:outline-none transform hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-md focus:ring-2 focus:ring-teal-400 transition-all duration-700 ease-in-out text-xl"
@@ -105,27 +111,34 @@
                     class="current-weather-container flex flex-col items-center"
                     id="current-weather"
                 >
+                    <!-- weather icon -->
                     <div
                         class="weather-icon text-8xl mb-4"
                         id="weather-icon"
                     ></div>
+                    <!-- temprature -->
                     <h2
                         class="temprature text-5xl font-bold text-white"
                         id="temprature"
                     ></h2>
+                    <!-- feels like temprature -->
                     <div
                         class="feelslike text-2xl m-2 text-gray-700 font-medium"
                         id="feels-like"
                     ></div>
+                    <!-- description haze,cloudy,clear etc -->
                     <div
                         class="description text-2xl text-gray-100 font-medium"
                         id="description"
                     ></div>
+                    <!-- a horizontal divider -->
                     <hr class="my-4 w-full border border-white/20" />
+                    <!-- day and date -->
                     <div
                         class="date text-gray-700 text-xl font-medium mb-2"
                         id="date"
                     ></div>
+                    <!-- city name -->
                     <div
                         class="city text-xl font-medium text-4xl font-bold"
                         id="city"
@@ -144,9 +157,11 @@
                     <div
                         class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
                     >
+                        <!-- Humidity icon -->
                         <i
                             class="fa-solid fa-water text-blue-500 text-4xl mb-5"
                         ></i>
+                        <!-- Humidity value -->
                         <h1
                             id="HValue"
                             class="text-sm sm:text-2xl md:text-2xl font-bold"
@@ -157,13 +172,15 @@
                             Humidity
                         </p>
                     </div>
-                    <!-- wind card -->
+                    <!-- Wind card -->
                     <div
                         class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
                     >
+                        <!-- Wind icon -->
                         <i
                             class="fa-solid fa-wind text-gray-500 text-4xl mb-5"
                         ></i>
+                        <!-- Wind value -->
                         <h1
                             id="WValue"
                             class="text-sm sm:2xl md:text-2xl font-bold"
@@ -174,13 +191,15 @@
                             Wind Speed
                         </p>
                     </div>
-                    <!-- sun card -->
+                    <!-- Sun card -->
                     <div
                         class="pt-4 sm:p-4 rounded-lg sm:text-center bg-gradient-to-r from-purple-400 to-indigo-400"
                     >
+                        <!-- Sun icon -->
                         <i
                             class="fa-solid fa-sun text-yellow-500 text-4xl mb-6 block text-center"
                         ></i>
+                        <!-- Sun rise time -->
                         <p
                             class="text-sm sm:text-xl text-gray-600 font-medium pl-3 md:p-0"
                         >
@@ -191,6 +210,7 @@
                                 >--</span
                             >
                         </p>
+                        <!-- Sun set time -->
                         <p
                             class="text-sm sm:text-xl text-gray-600 font-medium pl-3 md:p-0"
                         >
@@ -202,13 +222,15 @@
                             >
                         </p>
                     </div>
-                    <!-- cloud card -->
+                    <!-- Cloud card -->
                     <div
                         class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
                     >
+                        <!-- Cloud icon -->
                         <i
                             class="fa-solid fa-cloud text-gray-500 text-4xl mb-5"
                         ></i>
+                        <!-- Cloud value in % -->
                         <h1
                             id="CValue"
                             class="text-sm sm:text-2xl md:text-2xl font-bold"
@@ -219,13 +241,15 @@
                             Clouds
                         </p>
                     </div>
-                    <!-- uv index card -->
+                    <!-- UV Index card -->
                     <div
                         class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
                     >
+                        <!-- UV Index icon -->
                         <i
                             class="fa-solid fa-sun text-red-800 text-4xl mb-5"
                         ></i>
+                        <!-- UV Index value -->
                         <h1
                             id="UVValue"
                             class="text-sm sm:text-2xl md:text-2xl font-bold"
@@ -236,13 +260,15 @@
                             UV Index
                         </p>
                     </div>
-                    <!-- pressure card -->
+                    <!-- Pressure card -->
                     <div
                         class="p-4 rounded-lg text-center bg-gradient-to-r from-purple-400 to-indigo-400"
                     >
+                        <!-- Pressure icon -->
                         <i
                             class="fa-solid fa-tachometer-alt text-red-800 text-4xl mb-5"
                         ></i>
+                        <!-- Pressure value  -->
                         <h1
                             id="PValue"
                             class="text-sm sm:2xl md:text-2xl font-bold"
@@ -265,7 +291,7 @@
                     id="forecast-container"
                     class="grid grid-cols-1 md:grid-cols-3 gap-6"
                 >
-                    <!-- Weather cards for each day will be dynamically added -->
+                    <!-- Weather cards for each day will be dynamically added here -->
                 </div>
             </section>
         </main>
