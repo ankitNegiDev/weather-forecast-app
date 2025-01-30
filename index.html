@@ -1,24 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecast</title>
-    <!-- tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="CSS/style.css">
-</head>
-<body>
-    <h1>working</h1>
-    <h2>working fine</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Forecast</title>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!-- linking the custom css -->
+        <link rel="stylesheet" href="CSS/style.css" />
+    </head>
+    <body class="bg-gray-100 font-sans">
+        <!-- Header Section -->
+        <header class="bg-blue-600 text-white py-4">
+            <div
+                class="container mx-auto px-4 flex justify-between items-center"
+            >
+                <h1 class="text-2xl font-bold">Weather Forecast App</h1>
+                <nav>
+                    <a href="#" class="text-white hover:underline">Home</a>
+                </nav>
+            </div>
+        </header>
 
+        <!-- Main Section -->
+        <main class="container mx-auto px-4 mt-8">
+            <!-- Search Section -->
+            <section class="bg-white shadow-md p-6 rounded-lg mb-8">
+                <div class="flex flex-wrap justify-between items-center gap-4">
+                    <h2 class="text-xl font-bold">Search Weather</h2>
+                    <button
+                        id="unit-toggle-btn"
+                        class="bg-gray-200 text-sm py-1 px-3 rounded-lg focus:outline-none hover:bg-gray-300"
+                    >
+                        converter °C °F
+                    </button>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-4">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Enter city name"
+                        class="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-auto flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    />
+                    <select
+                        id="recent-dropdown"
+                        class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    >
+                        <!-- Dynamically add options here -->
+                    </select>
+                    <button
+                        id="search-btn"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+                    >
+                        Search
+                    </button>
+                    <button
+                        id="current-location-btn"
+                        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none"
+                    >
+                        Use Current Location
+                    </button>
+                </div>
+            </section>
 
+            <!-- Current Weather Section -->
+            <section class="bg-white shadow-md p-6 rounded-lg mb-8 text-center">
+                <h2 class="text-xl font-bold mb-4">Current Weather</h2>
+                <div
+                    class="current-weather-container flex flex-col items-center"
+                    id="current-weather"
+                >
+                    <div
+                        class="weather-icon text-6xl mb-4"
+                        id="weather-icon"
+                    ></div>
+                    <h2
+                        class="temprature text-4xl font-bold"
+                        id="temprature"
+                    ></h2>
+                    <div class="feelslike text-lg" id="feels-like"></div>
+                    <div
+                        class="description text-sm text-gray-500"
+                        id="description"
+                    ></div>
+                    <hr class="my-4 w-full" />
+                    <div class="date text-gray-600" id="date"></div>
+                    <div class="city text-xl font-medium" id="city"></div>
+                </div>
+            </section>
 
+            <!-- Today Highlights Section -->
+            <section class="bg-white shadow-md p-6 rounded-lg mb-8">
+                <h2 class="text-xl font-bold mb-4">Today Highlights</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Weather Cards -->
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <i
+                            class="fa-solid fa-water text-blue-500 text-3xl mb-2"
+                        ></i>
+                        <h1 id="HValue" class="text-xl font-bold">--%</h1>
+                        <p class="text-sm text-gray-600">Humidity</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <i
+                            class="fa-solid fa-wind text-green-500 text-3xl mb-2"
+                        ></i>
+                        <h1 id="WValue" class="text-xl font-bold">-- m/s</h1>
+                        <p class="text-sm text-gray-600">Wind Speed</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <i
+                            class="fa-solid fa-sun text-yellow-500 text-3xl mb-2"
+                        ></i>
+                        <p class="text-sm text-gray-600">
+                            Sunrise: <span id="sun-rise-value">--</span>
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            Sunset: <span id="sun-set-value">--</span>
+                        </p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <i
+                            class="fa-solid fa-cloud text-gray-500 text-3xl mb-2"
+                        ></i>
+                        <h1 id="CValue" class="text-xl font-bold">--%</h1>
+                        <p class="text-sm text-gray-600">Clouds</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <i
+                            class="fa-solid fa-sun text-red-500 text-3xl mb-2"
+                        ></i>
+                        <h1 id="UVValue" class="text-xl font-bold">--</h1>
+                        <p class="text-sm text-gray-600">UV Index</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg text-center">
+                        <i
+                            class="fa-solid fa-tachometer-alt text-red-700 text-3xl mb-2"
+                        ></i>
+                        <h1 id="PValue" class="text-xl font-bold">-- hPa</h1>
+                        <p class="text-sm text-gray-600">Pressure</p>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Extended Forecast Section -->
+            <section class="bg-white shadow-md p-6 rounded-lg">
+                <h2 class="text-xl font-bold mb-4">5-Day Forecast</h2>
+                <div
+                    id="forecast-container"
+                    class="grid grid-cols-1 md:grid-cols-3 gap-4"
+                >
+                    <!-- Weather cards for each day will be dynamically added -->
+                </div>
+            </section>
 
+            <!-- error div if something goes wrong just to avoid alert.. -->
+            <div id="error-message" class="text-red-500 text-center mt-4"></div>
+        </main>
 
-
-    <!-- linking js file -->
-    <script type="module" src="JS/app.js"></script>
-</body>
+        <!-- Linking JS Files -->
+        <script type="module" src="JS/app.js"></script>
+        <!-- <script src="JS/app.js"></script> -->
+    </body>
 </html>
