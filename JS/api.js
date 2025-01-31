@@ -3,6 +3,7 @@
 
 // api.js 1
 console.log("api.js working");
+import { showLoader, hideLoader } from "./ui.js";
 const apiKey = ""; //! need to figure out how we can hide api key.
 const apiUrl = "https://api.openweathermap.org/data/2.5/";
 
@@ -38,23 +39,30 @@ function buildExtendedForecastUrl({ apiUrl, apiKey, city, unit }) {
 }
 
 // creating a async function that will fetch data based on the url we provide...
-
 async function fetchData(url) {
     try {
-        // calling the fetch to get the data of given url...
-        // fetch will return a promise.
+        showLoader();
         const response = await fetch(url);
-
-        // checking that is respone is valid or not means does api gives any http error or not
+        setTimeout(function () {
+            hideLoader();
+        }, 3000);
         if (!response.ok) {
-            // response if not correct then throwing error message...
-            const message = await response.text();
-            throw new Error(message);
+            let errorMessage = await response.text();
+            // try block for if response.text() return a string which contain json data not plane text.
+            try {
+                const errorData = await response.json();
+                // creating a fallback for errorMessage.
+                errorMessage =
+                    errorData.message || errorData.error || errorMessage;
+            } catch (e) {}
+            // throwing a new error with actual error in errorMessage.
+            throw new Error(errorMessage);
         }
-        const data = await response.json();
-        return data;
+
+        return await response.json();
     } catch (error) {
         // throwing error back to caller.
+        console.log("error in fetch data");
         throw error;
     }
 }
