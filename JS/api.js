@@ -4,7 +4,7 @@
 // api.js 1
 console.log("api.js working");
 import { showLoader, hideLoader } from "./ui.js";
-const apiKey = "2c0b812d7987e578a355592f90d482c5"; // to hide api we need to use backend..
+const apiKey = "2c0b812d7987e578a355592f90d482c5"; // to hide api we need to use backend....
 const apiUrl = "https://api.openweathermap.org/data/2.5/";
 
 // creating a function to build url for fetchWeatherDataByCity().
@@ -13,7 +13,7 @@ function buildCityUrl({ apiUrl, city, apiKey, unit }) {
     // const cityUrl = `${obj.apiUrl}weather?q=${obj.city}&appid=${obj.apiKey}&units=${obj.unit}`;
 
     //todo => instead of this we will use object destructuring directly in function parameter..
-    
+
     const cityUrl = `${apiUrl}weather?q=${city}&appid=${apiKey}&units=${unit}`;
     return cityUrl;
 }
