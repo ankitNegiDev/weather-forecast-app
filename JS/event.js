@@ -138,10 +138,8 @@ async function toggleUnit() {
     isCelsius = !isCelsius;
     updateUnitToggleText(isCelsius);
     const { latitude, longitude } = getLocation();
-    console.log("-------------inside toggle unit () ----------------");
-    console.log(document.querySelector(".city"));
     // const city = document.querySelector(".city")?.textContent;
-    // ?. optional chaning operator??
+    // ?. optional chaning operator
     const city = document.getElementById("city")?.textContent;
     await fetchAndDisplayWeather(city, latitude, longitude);
 }
