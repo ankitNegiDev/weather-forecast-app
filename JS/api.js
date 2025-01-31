@@ -12,7 +12,8 @@ const apiUrl = "https://api.openweathermap.org/data/2.5/";
 function buildCityUrl({ apiUrl, city, apiKey, unit }) {
     // const cityUrl = `${obj.apiUrl}weather?q=${obj.city}&appid=${obj.apiKey}&units=${obj.unit}`;
 
-    //todo => instead of this we will use object destructuring..
+    //todo => instead of this we will use object destructuring directly in function parameter..
+    
     const cityUrl = `${apiUrl}weather?q=${city}&appid=${apiKey}&units=${unit}`;
     return cityUrl;
 }
