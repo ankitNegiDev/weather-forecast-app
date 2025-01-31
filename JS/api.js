@@ -4,7 +4,7 @@
 // api.js 1
 console.log("api.js working");
 import { showLoader, hideLoader } from "./ui.js";
-const apiKey = ""; //! need to figure out how we can hide api key.
+const apiKey = "2c0b812d7987e578a355592f90d482c5"; // to hide api we need to use backend..
 const apiUrl = "https://api.openweathermap.org/data/2.5/";
 
 // creating a function to build url for fetchWeatherDataByCity().

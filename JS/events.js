@@ -153,5 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
     searchBtn.addEventListener("click", searchWeather);
     currentLocationBtn.addEventListener("click", getCurrentLocationWeather);
     recentDropdown.addEventListener("change", handleRecentSearch);
+    searchInput.addEventListener("input", () => {
+        // Clear the error message if the user starts typing
+        displayErrorMessage("");
+    });
 });
 populateRecentSearchDropdown();
